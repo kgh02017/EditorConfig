@@ -107,6 +107,7 @@ dotnet_style_null_propagation = true:suggestion
 dotnet_style_object_initializer = true:suggestion
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 dotnet_style_prefer_auto_properties = true:suggestion
+dotnet_style_prefer_collection_expression = when_types_loosely_match
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_conditional_expression_over_assignment = true:silent
 dotnet_style_prefer_conditional_expression_over_return = true:silent
@@ -169,6 +170,7 @@ csharp_prefer_braces = true:suggestion
 csharp_prefer_simple_using_statement = false:suggestion
 csharp_style_namespace_declarations = file_scoped:suggestion
 csharp_style_prefer_method_group_conversion = false
+csharp_style_prefer_primary_constructors = true
 csharp_style_prefer_top_level_statements = true
 
 # Expression-level preferences
