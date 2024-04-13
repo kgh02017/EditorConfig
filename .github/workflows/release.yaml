@@ -40,4 +40,4 @@ jobs:
 
       # Publish to NuGet.org
       - run: |
-          dotnet nuget push ./bin/Release/*.nupkg -n true -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push ./bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
