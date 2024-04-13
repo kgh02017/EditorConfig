@@ -1,0 +1,43 @@
+name: Release-and-Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: release-build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout git repository
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Set up dotnet CLI
+      # https://github.com/actions/setup-dotnet
+      - name: Setup .NET CLI
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
+
+      # Build NuGet package for template
+      - name: Build NuGet package
+        run: dotnet pack
+
+      # Zip artifacts
+      - name: Zip artifacts
+        run: |
+          zip -j Kgh02017.Templates.editorconfig-${{github.ref_name}}.zip ./bin/Release/*.nupkg
+
+      # Upload release Assets
+      # https://github.com/AButler/upload-release-assets
+      - uses: AButler/upload-release-assets@v3.0
+        with:
+          files: Kgh02017.Templates.editorconfig-${{github.ref_name}}.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{github.ref_name}}
+
+      # Publish to NuGet.org
+      - run: |
+          dotnet nuget push ./bin/Release/*.nupkg -n true -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
