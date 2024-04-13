@@ -1,0 +1,36 @@
+name: CIBuild
+
+on:
+    push:
+      branches:
+        - "main"
+        - "master"
+
+jobs:
+  release:
+    name: ci-build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout git repository
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Set up dotnet CLI
+      # https://github.com/actions/setup-dotnet
+      - name: Setup .NET CLI
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
+
+      # Build NuGet package for template
+      - name: Build NuGet package
+        run: dotnet pack
+
+      # Upload artifacts
+      # https://github.com/actions/upload-artifact
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kgh02017.Templates.editorconfig-${{github.sha}}.zip
+          path: "./bin/Release/*.nupkg"
