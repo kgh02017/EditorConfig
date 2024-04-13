@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Taku Izumi",
+    "classifications": [
+        "Conifg"
+    ],
+    "name": "kgh02017 .editorconfig",
+    "identity": "Kgh02017.Templates.editorconfig",
+    "shortName": "kgh02017.editorconfig",
+    "tags": {
+        "type": "item"
+    },
+    "preferNameDirectory": false
+}

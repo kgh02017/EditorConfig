@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageVersion>1.2.0</PackageVersion>
+        <PackageId>Kgh02017.Templates.editorconfig</PackageId>
+        <Title>kgh02017 .editorconfig template</Title>
+        <Authors>Taku Izumi</Authors>
+        <Description>Templates that creates .editorconfig</Description>
+        <PackageTags>dotnet-new;templates;kgh02017;editorconfig</PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
+
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+
+        <PackageProjectUrl>https://github.com/kgh02017/EditorConfig</PackageProjectUrl>
+        <License>MIT</License>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryUrl>https://github.com/kgh02017/EditorConfig</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>kgh02017_logo.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+        <None Include="kgh02017_logo.png" Pack="true" PackagePath=""/>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+</Project>
